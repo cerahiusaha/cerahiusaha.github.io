@@ -1,0 +1,320 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Brosur & Flyer - CerahiUsaha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .form-select, .form-input {
+            transition: all 0.3s ease;
+        }
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #4f46e5;
+            background-color: #eef2ff;
+        }
+        .option-card {
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .option-card.selected {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+            background-color: #eef2ff;
+        }
+        .gallery-thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .gallery-thumbnail.active {
+            border-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">
+                Cerahi<span class="text-indigo-600">Usaha</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8" id="nav-links">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600">Home</a>
+                <a href="index.html#layanan" class="text-gray-600 hover:text-indigo-600">Layanan</a>
+                <a href="index.html#produk" class="text-gray-600 hover:text-indigo-600">Produk</a>
+                <a href="index.html#kontak" class="text-gray-600 hover:text-indigo-600">Kontak</a>
+            </div>
+             <a href="javascript:void(0)" onclick="hubungiKami()" class="hidden md:block bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition duration-300">Hubungi Kami</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            
+            <!-- Kolom Kiri: Galeri Gambar -->
+            <div class="lg:col-span-2">
+                <div class="sticky top-28 flex flex-col gap-8">
+                    <!-- Bagian Galeri -->
+                    <div>
+                        <img id="main-image" src="image/agencybrosur.png" alt="Contoh Brosur" class="w-full h-auto object-cover rounded-xl shadow-lg mb-4">
+                        <div class="grid grid-cols-4 gap-3">
+                            <img src="image/agencybrosur.png" alt="Thumbnail 1" class="gallery-thumbnail active rounded-lg" onclick="changeImage(this.src)">
+                            <img src="image/birubrosur.png" alt="Thumbnail 2" class="gallery-thumbnail rounded-lg" onclick="changeImage(this.src)">
+                            <img src="image/japanbrosur.png" alt="Thumbnail 3" class="gallery-thumbnail rounded-lg" onclick="changeImage(this.src)">
+                        </div>
+                    </div>
+                     <!-- Bagian Deskripsi -->
+                    <div class="bg-white p-6 rounded-xl shadow">
+                        <h3 class="font-bold text-lg text-gray-800 mb-3">Deskripsi Brosur & Flyer</h3>
+                        <p class="text-gray-600 text-sm">
+                           Sampaikan informasi dan promosi Anda secara efektif dengan brosur dan flyer berkualitas. Dicetak di atas kertas premium dengan warna yang tajam, materi promosi Anda akan terlihat profesional dan mampu menarik perhatian calon pelanggan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Form Pemesanan -->
+            <div class="lg:col-span-3">
+                <h1 id="form-title" class="text-3xl font-bold text-gray-800">Pesan Brosur & Flyer</h1>
+                <p class="text-gray-500 mt-1 mb-6">Lengkapi detail pesanan Anda di bawah ini.</p>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <!-- 1. Ukuran -->
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">1. Pilih Ukuran</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="ukuran-options">
+                            <div class="option-card p-4 rounded-lg selected" onclick="selectOption('ukuran', this)" data-value="A3">
+                                <h4 class="font-semibold text-gray-800">Brosur A3</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('ukuran', this)" data-value="A4">
+                                <h4 class="font-semibold text-gray-800">Brosur A4</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('ukuran', this)" data-value="A5">
+                                <h4 class="font-semibold text-gray-800">Brosur A5</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('ukuran', this)" data-value="A6">
+                                <h4 class="font-semibold text-gray-800">Brosur A6</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('ukuran', this)" data-value="10x21">
+                                <h4 class="font-semibold text-gray-800">Flyer 10x21</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('ukuran', this)" data-value="21x21">
+                                <h4 class="font-semibold text-gray-800">Flyer 21x21</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Bahan -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">2. Pilih Bahan</h3>
+                        <select id="bahan" class="form-select w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+
+                    <!-- 3. Cetak Sisi -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">3. Cetak Sisi</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="sisi-options">
+                            <div class="option-card p-4 rounded-lg selected" onclick="selectOption('sisi', this)" data-value="1sisi">
+                                <h4 class="font-semibold text-gray-800">1 Sisi</h4>
+                            </div>
+                            <div class="option-card p-4 rounded-lg" onclick="selectOption('sisi', this)" data-value="2sisi">
+                                <h4 class="font-semibold text-gray-800">2 Sisi</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Finishing / Lipat -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">4. Finishing / Lipat</h3>
+                        <select id="lipat" class="form-select w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <option value="tanpa">Tanpa Lipat</option>
+                            <option value="lipat2">Lipat 2</option>
+                            <option value="lipat3">Lipat 3</option>
+                            <option value="lipat4">Lipat 4</option>
+                        </select>
+                    </div>
+
+                    <!-- 5. Kuantitas -->
+                     <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">5. Jumlah</h3>
+                         <div>
+                            <label for="jumlah" class="text-sm font-medium text-gray-700">Jumlah (per Rim = 500 lbr)</label>
+                            <input type="number" id="jumlah" class="form-input w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" value="1" min="1">
+                        </div>
+                    </div>
+                    
+                    <!-- 6. Upload Desain -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">6. Upload Desain Anda</h3>
+                         <div class="upload-area p-6 text-center rounded-lg">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                            <p class="mt-2 text-gray-600">Seret & lepas file, atau <span class="text-indigo-600 font-semibold cursor-pointer">klik untuk memilih file</span>.</p>
+                            <p class="text-xs text-gray-400 mt-1">PNG, JPG, PDF. Maks 50MB.</p>
+                            <input type="file" class="hidden" id="file-upload">
+                        </div>
+                        <div class="mt-2">
+                             <input type="checkbox" id="belum-ada-desain" class="rounded text-indigo-600 focus:ring-indigo-500">
+                             <label for="belum-ada-desain" class="ml-2 text-sm text-gray-700">Centang jika Anda belum punya desain.</label>
+                        </div>
+                    </div>
+
+                     <!-- 7. Catatan -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">7. Catatan Tambahan</h3>
+                        <textarea id="catatan" rows="3" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Contoh: Tolong warna dibuat lebih tajam."></textarea>
+                    </div>
+                </div>
+
+                <!-- Kalkulasi Harga & Tombol Pesan -->
+                <div class="bg-white p-6 rounded-xl shadow-lg mt-8 sticky bottom-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-600 font-medium">Subtotal Harga:</span>
+                        <span id="total-harga" class="text-2xl font-bold text-indigo-600">Rp 0</span>
+                    </div>
+                    <button onclick="kirimPesanan()" class="w-full bg-indigo-600 text-white py-4 rounded-lg text-lg font-bold hover:bg-indigo-700 transition duration-300 flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-3"></i> Pesan via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">
+            &copy; 2024 CerahiUsaha. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script>
+        const nomorWhatsApp = '6285880574423';
+        let formState = {
+            ukuran: 'A3',
+            sisi: '1sisi'
+        };
+
+        const data = {
+            A3: {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 715000, '2sisi': 1100000}, 'ap120': {'1sisi': 770000, '2sisi': 1210000}, 'ap150': {'1sisi': 880000, '2sisi': 1430000}, 'mp120': {'1sisi': 825000, '2sisi': 1320000}, 'mp150': {'1sisi': 935000, '2sisi': 1540000}, 'ac210': {'1sisi': 1100000, '2sisi': 1870000}}
+            },
+            A4: {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 385000, '2sisi': 550000}, 'ap120': {'1sisi': 440000, '2sisi': 605000}, 'ap150': {'1sisi': 550000, '2sisi': 715000}, 'mp120': {'1sisi': 495000, '2sisi': 660000}, 'mp150': {'1sisi': 605000, '2sisi': 770000}, 'ac210': {'1sisi': 715000, '2sisi': 1045000}}
+            },
+            A5: {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 220000, '2sisi': 275000}, 'ap120': {'1sisi': 247500, '2sisi': 330000}, 'ap150': {'1sisi': 275000, '2sisi': 385000}, 'mp120': {'1sisi': 275000, '2sisi': 385000}, 'mp150': {'1sisi': 330000, '2sisi': 440000}, 'ac210': {'1sisi': 385000, '2sisi': 550000}}
+            },
+            A6: {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 143000, '2sisi': 176000}, 'ap120': {'1sisi': 176000, '2sisi': 220000}, 'ap150': {'1sisi': 192500, '2sisi': 275000}, 'mp120': {'1sisi': 192500, '2sisi': 275000}, 'mp150': {'1sisi': 220000, '2sisi': 330000}, 'ac210': {'1sisi': 275000, '2sisi': 440000}}
+            },
+            '10x21': {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 176000, '2sisi': 231000}, 'ap120': {'1sisi': 192500, '2sisi': 275000}, 'ap150': {'1sisi': 231000, '2sisi': 330000}, 'mp120': {'1sisi': 220000, '2sisi': 330000}, 'mp150': {'1sisi': 275000, '2sisi': 385000}, 'ac210': {'1sisi': 330000, '2sisi': 495000}}
+            },
+            '21x21': {
+                materials: {'hvs100': 'HVS 100gr', 'ap120': 'Art Paper 120gr', 'ap150': 'Art Paper 150gr', 'mp120': 'Matte Paper 120gr', 'mp150': 'Matte Paper 150gr', 'ac210': 'Art Carton 210gr'},
+                prices: {'hvs100': {'1sisi': 385000, '2sisi': 550000}, 'ap120': {'1sisi': 440000, '2sisi': 605000}, 'ap150': {'1sisi': 550000, '2sisi': 715000}, 'mp120': {'1sisi': 495000, '2sisi': 660000}, 'mp150': {'1sisi': 605000, '2sisi': 770000}, 'ac210': {'1sisi': 715000, '2sisi': 1045000}}
+            }
+        };
+
+        const bahanSelect = document.getElementById('bahan');
+        const jumlahInput = document.getElementById('jumlah');
+        const totalHargaDisplay = document.getElementById('total-harga');
+
+        function updateForm() {
+            const currentData = data[formState.ukuran];
+            
+            bahanSelect.innerHTML = '';
+            for (const [value, text] of Object.entries(currentData.materials)) {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = text;
+                bahanSelect.appendChild(option);
+            }
+            calculatePrice();
+        }
+
+        function calculatePrice() {
+            const jumlah = parseInt(jumlahInput.value) || 0;
+            const bahanValue = bahanSelect.value;
+            const hargaPerRim = data[formState.ukuran].prices[bahanValue][formState.sisi];
+            const total = hargaPerRim * jumlah;
+            totalHargaDisplay.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+        
+        function selectOption(type, element) {
+            document.getElementById(`${type}-options`).querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+            formState[type] = element.dataset.value;
+
+            if (type === 'ukuran') {
+                updateForm();
+            } else {
+                calculatePrice();
+            }
+        }
+        
+        function changeImage(src) {
+            document.getElementById('main-image').src = src;
+            document.querySelectorAll('.gallery-thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function kirimPesanan() {
+            const ukuranTerpilih = document.querySelector('#ukuran-options .selected h4').textContent;
+            const bahanTerpilih = bahanSelect.options[bahanSelect.selectedIndex].text;
+            const sisiTerpilih = document.querySelector('#sisi-options .selected h4').textContent;
+            const lipat = document.getElementById('lipat').value;
+            const jumlah = jumlahInput.value;
+            const butuhDesain = document.getElementById('belum-ada-desain').checked;
+            const catatan = document.getElementById('catatan').value;
+            const hargaFinal = totalHargaDisplay.textContent;
+
+            let pesan = `*Pemesanan Brosur/Flyer - CerahiUsaha*\n\n`;
+            pesan += `*Ukuran:* ${ukuranTerpilih}\n`;
+            pesan += `*Bahan:* ${bahanTerpilih}\n`;
+            pesan += `*Cetak:* ${sisiTerpilih}\n`;
+            pesan += `*Finishing:* ${lipat}\n`;
+            pesan += `*Jumlah:* ${jumlah} Rim\n`;
+            pesan += `*Status Desain:* ${butuhDesain ? 'Minta dibuatkan desain' : 'Sudah ada desain (akan dikirim)'}\n`;
+            if (catatan) {
+                pesan += `*Catatan:* ${catatan}\n`;
+            }
+            pesan += `\n*Estimasi Harga:* ${hargaFinal}\n\n`;
+            pesan += `Mohon konfirmasi untuk proses selanjutnya. Terima kasih.`;
+            
+            const linkWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${encodeURIComponent(pesan)}`;
+            window.open(linkWhatsApp, '_blank');
+        }
+        
+        function hubungiKami() {
+            const pesan = encodeURIComponent(`Halo CerahiUsaha, saya ingin berkonsultasi mengenai kebutuhan branding untuk bisnis saya.`);
+            window.open(`https://wa.me/${nomorWhatsApp}?text=${pesan}`, '_blank');
+        }
+
+        [bahanSelect, jumlahInput].forEach(input => {
+            input.addEventListener('input', calculatePrice);
+        });
+        
+        window.onload = updateForm;
+    </script>
+
+</body>
+</html>

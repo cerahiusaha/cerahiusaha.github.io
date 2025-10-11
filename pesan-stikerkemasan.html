@@ -1,0 +1,285 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Stiker Kemasan - CerahiUsaha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .form-select, .form-input {
+            transition: all 0.3s ease;
+        }
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #4f46e5;
+            background-color: #eef2ff;
+        }
+        .option-card {
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .option-card.selected {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+            background-color: #eef2ff;
+        }
+        .gallery-thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .gallery-thumbnail.active {
+            border-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">
+                Cerahi<span class="text-indigo-600">Usaha</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8" id="nav-links">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600">Home</a>
+                <a href="index.html#layanan" class="text-gray-600 hover:text-indigo-600">Layanan</a>
+                <a href="index.html#produk" class="text-gray-600 hover:text-indigo-600">Produk</a>
+                <a href="index.html#kontak" class="text-gray-600 hover:text-indigo-600">Kontak</a>
+            </div>
+             <a href="javascript:void(0)" onclick="hubungiKami()" class="hidden md:block bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition duration-300">Hubungi Kami</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            
+            <!-- Kolom Kiri: Galeri Gambar -->
+            <div class="lg:col-span-2">
+                <div class="sticky top-28 flex flex-col gap-8">
+                    <!-- Bagian Galeri -->
+                    <div>
+                        <img id="main-image" src="image/sambelstiker.png" alt="Contoh Stiker" class="w-full h-auto object-cover rounded-xl shadow-lg mb-4">
+                        <div class="grid grid-cols-4 gap-3">
+                           <img src="image/sambelstiker.png" alt="Thumbnail 1" class="gallery-thumbnail active rounded-lg" onclick="changeImage(this)">
+                           <img src="image/merconsambelstiker.png" alt="Thumbnail 2" class="gallery-thumbnail rounded-lg" onclick="changeImage(this)">
+                           <img src="image/sambelstiker.png" alt="Thumbnail 3" class="gallery-thumbnail rounded-lg" onclick="changeImage(this)">
+                        </div>
+                    </div>
+                     <!-- Bagian Deskripsi -->
+                    <div class="bg-white p-6 rounded-xl shadow">
+                        <h3 class="font-bold text-lg text-gray-800 mb-3">Deskripsi Stiker Kemasan</h3>
+                        <p class="text-gray-600 text-sm">
+                           Jadikan produk Anda lebih menonjol dengan stiker kemasan kustom. Kami menyediakan berbagai pilihan bahan berkualitas, mulai dari Chromo yang ekonomis hingga Vinyl yang tahan air dan Silver yang mewah. Sempurna untuk label produk, segel kemasan, atau branding promosi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Form Pemesanan -->
+            <div class="lg:col-span-3">
+                <h1 id="form-title" class="text-3xl font-bold text-gray-800">Pesan Stiker Kemasan (A3+)</h1>
+                <p class="text-gray-500 mt-1 mb-6">Lengkapi detail pesanan Anda di bawah ini.</p>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <!-- 1. Bahan -->
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">1. Pilih Bahan</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="bahan-options">
+                            <div class="option-card p-3 rounded-lg selected" onclick="selectOption('bahan', this)" data-value="chromo"><h4 class="font-semibold text-center text-sm">Chromo</h4></div>
+                            <div class="option-card p-3 rounded-lg" onclick="selectOption('bahan', this)" data-value="vinyl_doff"><h4 class="font-semibold text-center text-sm">Vinyl Doff</h4></div>
+                            <div class="option-card p-3 rounded-lg" onclick="selectOption('bahan', this)" data-value="vinyl_glossy"><h4 class="font-semibold text-center text-sm">Vinyl Glossy</h4></div>
+                            <div class="option-card p-3 rounded-lg" onclick="selectOption('bahan', this)" data-value="hvs"><h4 class="font-semibold text-center text-sm">HVS</h4></div>
+                            <div class="option-card p-3 rounded-lg" onclick="selectOption('bahan', this)" data-value="silver_doff"><h4 class="font-semibold text-center text-sm">Silver Doff</h4></div>
+                            <div class="option-card p-3 rounded-lg" onclick="selectOption('bahan', this)" data-value="silver_glossy"><h4 class="font-semibold text-center text-sm">Silver Glossy</h4></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Ukuran (Informational) -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">2. Ukuran Stiker (Informasi)</h3>
+                         <div class="flex items-center gap-4">
+                            <div class="w-full">
+                                <label for="panjang" class="text-sm font-medium text-gray-700">Panjang (Cm)</label>
+                                <input type="number" id="panjang" class="form-input w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Contoh: 5">
+                            </div>
+                            <div class="pt-6 font-bold text-xl text-gray-400">×</div>
+                            <div class="w-full">
+                                <label for="lebar" class="text-sm font-medium text-gray-700">Lebar (Cm)</label>
+                                <input type="number" id="lebar" class="form-input w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Contoh: 5">
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <!-- 3. Finishing -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">3. Finishing (Potong)</h3>
+                        <select id="finishing" class="form-select w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                            <option value="none">Tanpa Cutting</option>
+                            <option value="kiss_cut">Kiss Cut Pola</option>
+                            <option value="die_cut">Die Cut Pola</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Kuantitas -->
+                     <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">4. Jumlah</h3>
+                         <div>
+                            <label for="jumlah" class="text-sm font-medium text-gray-700">Jumlah (Lembar A3+)</label>
+                            <input type="number" id="jumlah" class="form-input w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" value="1" min="1">
+                        </div>
+                    </div>
+                    
+                    <!-- 5. Upload Desain -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">5. Upload Desain Anda</h3>
+                         <div class="upload-area p-6 text-center rounded-lg">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                            <p class="mt-2 text-gray-600">Seret & lepas file, atau <span class="text-indigo-600 font-semibold cursor-pointer">klik untuk memilih file</span>.</p>
+                            <p class="text-xs text-gray-400 mt-1">PNG, JPG, PDF. Maks 50MB.</p>
+                            <input type="file" class="hidden" id="file-upload">
+                        </div>
+                        <div class="mt-2">
+                             <input type="checkbox" id="belum-ada-desain" class="rounded text-indigo-600 focus:ring-indigo-500">
+                             <label for="belum-ada-desain" class="ml-2 text-sm text-gray-700">Centang jika Anda belum punya desain.</label>
+                        </div>
+                    </div>
+
+                     <!-- 6. Catatan -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-4">6. Catatan Tambahan</h3>
+                        <textarea id="catatan" rows="3" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Contoh: Tolong warna dibuat lebih tajam."></textarea>
+                    </div>
+                </div>
+
+                <!-- Kalkulasi Harga & Tombol Pesan -->
+                <div class="bg-white p-6 rounded-xl shadow-lg mt-8 sticky bottom-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-600 font-medium">Subtotal Harga:</span>
+                        <span id="total-harga" class="text-2xl font-bold text-indigo-600">Rp 0</span>
+                    </div>
+                    <button onclick="kirimPesanan()" class="w-full bg-indigo-600 text-white py-4 rounded-lg text-lg font-bold hover:bg-indigo-700 transition duration-300 flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-3"></i> Pesan via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500 text-sm">
+            &copy; 2024 CerahiUsaha. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script>
+        const nomorWhatsApp = '6285880574423';
+        
+        const data = {
+            prices: {
+                'chromo': 11000,
+                'vinyl_doff': 16500,
+                'vinyl_glossy': 16500,
+                'hvs': 11000,
+                'silver_doff': 27500,
+                'silver_glossy': 27500
+            },
+            cutting_surcharge: {
+                'kiss_cut': 5500, // 5,000 * 1.1
+                'die_cut': 5500   // 5,000 * 1.1
+            }
+        };
+        
+        const bahanOptions = document.getElementById('bahan-options');
+        const finishingSelect = document.getElementById('finishing');
+        const jumlahInput = document.getElementById('jumlah');
+        const totalHargaDisplay = document.getElementById('total-harga');
+
+        let formState = {
+            bahan: 'chromo'
+        };
+
+        function calculatePrice() {
+            const jumlahLembar = parseInt(jumlahInput.value) || 0;
+            const finishingValue = finishingSelect.value;
+
+            let hargaPerLembar = data.prices[formState.bahan];
+
+            if (finishingValue !== 'none') {
+                hargaPerLembar += data.cutting_surcharge[finishingValue];
+            }
+
+            const total = hargaPerLembar * jumlahLembar;
+            totalHargaDisplay.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+        
+        function selectOption(type, element) {
+            document.getElementById(`${type}-options`).querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+            formState[type] = element.dataset.value;
+            calculatePrice();
+        }
+        
+        function changeImage(element) {
+            document.getElementById('main-image').src = element.src;
+            document.querySelectorAll('.gallery-thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+        }
+        
+        function kirimPesanan() {
+            const bahanTerpilih = document.querySelector('#bahan-options .selected h4').textContent;
+            const panjang = document.getElementById('panjang').value;
+            const lebar = document.getElementById('lebar').value;
+            const finishingTerpilih = finishingSelect.options[finishingSelect.selectedIndex].text;
+            const jumlah = jumlahInput.value;
+            const butuhDesain = document.getElementById('belum-ada-desain').checked;
+            const catatan = document.getElementById('catatan').value;
+            const hargaFinal = totalHargaDisplay.textContent;
+
+            let pesan = `*Pemesanan Stiker Kemasan - CerahiUsaha*\n\n`;
+            pesan += `*Bahan:* ${bahanTerpilih}\n`;
+            if (panjang && lebar) {
+                pesan += `*Ukuran Stiker:* ${panjang} x ${lebar} cm\n`;
+            }
+            pesan += `*Finishing:* ${finishingTerpilih}\n`;
+            pesan += `*Jumlah:* ${jumlah} Lembar A3+\n`;
+            pesan += `*Status Desain:* ${butuhDesain ? 'Minta dibuatkan desain' : 'Sudah ada desain (akan dikirim)'}\n`;
+            if (catatan) {
+                pesan += `*Catatan:* ${catatan}\n`;
+            }
+            pesan += `\n*Estimasi Harga:* ${hargaFinal}\n\n`;
+            pesan += `Mohon konfirmasi untuk proses selanjutnya. Terima kasih.`;
+            
+            const linkWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${encodeURIComponent(pesan)}`;
+            window.open(linkWhatsApp, '_blank');
+        }
+        
+        function hubungiKami() {
+            const pesan = encodeURIComponent(`Halo CerahiUsaha, saya ingin berkonsultasi mengenai kebutuhan branding untuk bisnis saya.`);
+            window.open(`https://wa.me/${nomorWhatsApp}?text=${pesan}`, '_blank');
+        }
+
+        jumlahInput.addEventListener('input', calculatePrice);
+        finishingSelect.addEventListener('change', calculatePrice);
+        
+        document.querySelectorAll('#bahan-options .option-card').forEach(card => {
+            card.addEventListener('click', () => {
+                selectOption('bahan', card);
+            });
+        });
+        
+        window.onload = calculatePrice;
+    </script>
+
+</body>
+</html>

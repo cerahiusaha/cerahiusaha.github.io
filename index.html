@@ -240,8 +240,8 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Product Card Example -->
                     <div class="bg-gray-100 rounded-lg overflow-hidden group card-hover transition-all duration-300 text-center">
-                        <div class="relative">
-                            <img src="image/scalenest.png" alt="Desain Logo" class="w-full h-48 object-cover">
+                        <div class="relative h-48 flex items-center justify-center bg-gray-100 p-4">
+                            <img src="image/scalenest.png" alt="Desain Logo" class="h-36 w-auto object-contain">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-gray-800">Desain Logo Profesional</h3>
@@ -324,8 +324,27 @@
         const nomorWhatsApp = '6285880574423'; // Awali dengan 62, tanpa tanda + atau 0 di depan
 
         function pesanProduk(namaProduk) {
-            const pesan = encodeURIComponent(`Halo CerahiUsaha, saya tertarik untuk memesan layanan *${namaProduk}*. Bisa minta informasi lebih lanjut?`);
-            window.open(`https://wa.me/${nomorWhatsApp}?text=${pesan}`, '_blank');
+            const productMap = {
+                'Spanduk & Banner': 'pesan-spanduk.html',
+                'Spanduk Warung': 'pesan-spanduk.html',
+                'Livery Kendaraan': 'pesan-decal.html',
+                'Desain Menu': 'pesan-bukumenu.html',
+                'Poster Promosi': 'pesan-poster.html',
+                'Brosur & Flyer': 'pesan-brosur.html',
+                'Desain Logo': 'pesan-logo.html',
+                'Stiker Kemasan': 'pesan-stikerkemasan.html',
+                'Kartu Nama': 'pesan-kartunama.html'
+            };
+
+            const url = productMap[namaProduk];
+
+            if (url) {
+                window.location.href = url;
+            } else {
+                // Default behavior for products without a dedicated page, e.g., "Paket Usaha Hemat"
+                const pesan = encodeURIComponent(`Halo CerahiUsaha, saya tertarik untuk memesan layanan *${namaProduk}*. Bisa minta informasi lebih lanjut?`);
+                window.open(`https://wa.me/${nomorWhatsApp}?text=${pesan}`, '_blank');
+            }
         }
         
         function hubungiKami() {
@@ -343,12 +362,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
